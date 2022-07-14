@@ -2,13 +2,20 @@
   "chromeWebSecurity": false,
   "defaultCommandTimeout": 8000,
   "pageLoadTimeout": 30000,
-  "reporter": "mochawesome",
+  "viewportWidth": 1280,
+  "viewportHeight": 720,
+  "waitForAnimations": true,
+
   "env": {
-    "url": "https://rahulshettyacademy.com"
+    "baseUrl": "https://rahulshettyacademy.com"
   },
+
   "testFiles": "**/*.js",
+
   "retries": {
     "runMode": 1
   },
+
+  "reporter": "mochawesome",
   "projectId": "a5zbka"
 }

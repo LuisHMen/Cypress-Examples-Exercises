@@ -12,15 +12,6 @@
 // -- This is a parent command --
 // Cypress.Commands.add("login", (email, password) => { ... })
 //
-
-Cypress.Commands.add("selectProduct", (productName) => {
-    cy.get('h4.card-title').each(($el, index, $list) => {
-        if ($el.text().includes(productName)) {
-            cy.get('button.btn.btn-info').eq(index).click()
-        }
-    })
-})
-
 //
 // -- This is a child command --
 // Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
@@ -32,3 +23,21 @@ Cypress.Commands.add("selectProduct", (productName) => {
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("selectProduct", (productName) => {
+    cy.get('h4.card-title').each(($el, index, $list) => {
+        if ($el.text().includes(productName)) {
+            cy.get('button.btn.btn-info').eq(index).click()
+        }
+    })
+})
+
+Cypress.Commands.add('login', (username, password) => {
+    cy.clearCookis()
+    cy.clearLocalStorage()
+    
+    cy.get('#user_login').type(username)
+    cy.get('#user_password').type(password)
+    cy.get('#user_remember_me').click()
+    cy.contains('Sign in').click()
+})
